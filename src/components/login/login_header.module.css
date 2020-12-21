@@ -10,15 +10,16 @@
   display: flex;
   justify-content: center;
   height: 3rem;
-  margin: 0.3rem 0;
+  margin-bottom: 0.3rem;
 }
 .favicon {
   width: 2.5rem;
   height: 2rem;
-  padding: 0;
+  padding: 1rem;
 }
 .button {
   height: 1.5rem;
+  margin-top: 1rem;
 }
 
 .down {

@@ -4,7 +4,7 @@ import "./index.module.css";
 import App from "./app";
 import AuthService from "./service/auth_service";
 
-// dependancy insection
+// dependancy injection
 const authService = new AuthService();
 ReactDOM.render(
   <React.StrictMode>

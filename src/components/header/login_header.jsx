@@ -1,16 +1,16 @@
 import React from "react";
 import styles from "./login_header.module.css";
-const Login_header = (props) => {
+const Login_header = ({ onLogout }) => {
   return (
     <>
       <header className={styles.header}>
-        <div className={styles.upper}>
-          <img src="./favicon.ico" className={styles.favicon}></img>
-          <button className={styles.button}>logout</button>
-        </div>
-        <div className={styles.down}>
-          <p className={styles.header_title}>Business Card Maker</p>
-        </div>
+        <img src="./favicon.ico" alt="logo" className={styles.favicon}></img>
+        {onLogout && (
+          <button className={styles.logout} onClick={onLogout}>
+            logout
+          </button>
+        )}
+        <h1 className={styles.header_title}>Business Card Maker</h1>
       </header>
     </>
   );

@@ -11,14 +11,14 @@ const Login_auth = ({ authService }) => {
     <>
       <div className={styles.auth}>
         <h1 className={styles.title}>Login</h1>
-        <ul className={styles.button}>
+        <ul className={styles.ul}>
           <li>
-            <button className={styles.google} onClick={onLogin}>
+            <button className={styles.authButton} onClick={onLogin}>
               Google
             </button>
           </li>
           <li>
-            <button className={styles.github} onClick={onLogin}>
+            <button className={styles.authButton} onClick={onLogin}>
               Github
             </button>
           </li>

@@ -1,3 +1,4 @@
+@value makerLightPink,makerBlack from '../../common/colors.css';
 .auth {
   display: flex;
   justify-content: center;
@@ -9,26 +10,25 @@
   font-weight: 700;
 }
 
-.button {
+.ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
-button {
-  outline: none;
-  border: 1.5px solid black;
-  cursor: pointer;
-  background-color: transparent;
+
+.authButton {
+  height: 2.5rem;
+  width: 30rem;
   border-radius: 2rem;
   margin-bottom: 0.5rem;
+  font-weight: 550;
+  font-size: 0.8em;
+  background-color: transparent;
+  border: 1.8px solid makerBlack;
 }
 
-.google {
-  height: 2rem;
-  width: 30rem;
-}
-
-.github {
-  height: 2rem;
-  width: 30rem;
+.authButton:hover {
+  background-color: makerLightPink;
 }

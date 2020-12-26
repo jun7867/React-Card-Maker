@@ -1,11 +1,23 @@
 import React from "react";
 import Login from "./components/login/login";
 import styles from "./app.module.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./components/home/home";
 function App({ authService }) {
   return (
-    <div>
-      <Login authService={authService}></Login>
-    </div>
+    <>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <Login authService={authService}></Login>
+          </Route>
+
+          <Route path="/home">
+            <Home />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 }
 

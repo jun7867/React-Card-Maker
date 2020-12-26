@@ -1,11 +1,23 @@
 import React from "react";
 import styles from "./login_auth.module.css";
+import { useHistory } from "react-router";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 const Login_auth = ({ authService }) => {
+  const history = useHistory();
+
+  const goToHome = (userId) => {
+    history.push({
+      pathname: "/home",
+      state: { id: userId },
+    });
+  };
+
   const onLogin = (event) => {
     console.log(event.currentTarget.textContent);
     authService //
       .login(event.currentTarget.textContent)
-      .then(console.log);
+      .then((data) => goToHome(data.user.uid));
   };
   return (
     <>

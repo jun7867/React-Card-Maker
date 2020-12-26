@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./home.module.css";
 import { useHistory } from "react-router";
-const Home = (props) => {
+import Header from "../header/login_header";
+const Home = ({ authService }) => {
   const history = useHistory();
+  const onLogout = () => {
+    authService.logout();
+  };
+
+  useEffect(() => {
+    // logout function
+    authService.onAuthChange((user) => {
+      if (!user) {
+        history.push("/");
+      }
+    });
+  });
   return (
     <div className={styles.Home}>
-      <h1>Home</h1>
-      <button onClick={() => history.push("/")}> Go to profile</button>
+      <Header onLogout={onLogout} />
     </div>
   );
 };

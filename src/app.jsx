@@ -13,7 +13,7 @@ function App({ authService }) {
           </Route>
 
           <Route path="/home">
-            <Home />
+            <Home authService={authService} />
           </Route>
         </Switch>
       </BrowserRouter>

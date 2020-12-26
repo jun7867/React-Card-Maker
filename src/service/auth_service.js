@@ -9,7 +9,7 @@ class AuthService {
   }
   redirect() {}
   logout() {
-    return firebaseApp.auth().signOut();
+    firebaseApp.auth().signOut();
   }
   // 사용자가 바뀌면 = 업데이트되면
   onAuthChange(onUserChanged) {

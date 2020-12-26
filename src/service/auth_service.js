@@ -11,6 +11,12 @@ class AuthService {
   logout() {
     return firebaseApp.auth().signOut();
   }
+  // 사용자가 바뀌면 = 업데이트되면
+  onAuthChange(onUserChanged) {
+    firebase.auth().onAuthStateChanged((user) => {
+      onUserChanged(user);
+    });
+  }
 }
 
 export default AuthService;

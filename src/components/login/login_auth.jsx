@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./login_auth.module.css";
 import { useHistory } from "react-router";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -19,6 +19,14 @@ const Login_auth = ({ authService }) => {
       .login(event.currentTarget.textContent)
       .then((data) => goToHome(data.user.uid));
   };
+
+  useEffect(() => {
+    // component 업데이트시 (자동 로그인- 유저가 이미 있다면)
+    authService.onAuthChange((user) => {
+      user && goToHome(user.uid);
+    });
+  });
+
   return (
     <>
       <div className={styles.auth}>

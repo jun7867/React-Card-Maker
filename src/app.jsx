@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./components/home/home";
 function App({ authService }) {
   return (
-    <>
+    <section className={styles.all}>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
@@ -17,7 +17,7 @@ function App({ authService }) {
           </Route>
         </Switch>
       </BrowserRouter>
-    </>
+    </section>
   );
 }
 

@@ -1,11 +1,7 @@
 import React from "react";
 
 const CardEditForm = ({ card }) => {
-  return (
-    <>
-      <h1>{card.id}</h1>
-    </>
-  );
+  return <></>;
 };
 
 export default CardEditForm;

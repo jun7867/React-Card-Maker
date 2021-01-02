@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import styles from "./login_auth.module.css";
 import { useHistory } from "react-router";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-const Login_auth = ({ authService }) => {
+const LoginAuth = ({ authService }) => {
   const history = useHistory();
 
   const goToHome = (userId) => {
@@ -48,4 +47,4 @@ const Login_auth = ({ authService }) => {
   );
 };
 
-export default Login_auth;
+export default LoginAuth;

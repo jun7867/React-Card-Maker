@@ -1,15 +1,15 @@
 import React from "react";
-import Login_header from "../header/login_header";
+import LoginHeader from "../header/login_header";
 import styles from "./login.module.css";
-import Login_auth from "./login_auth";
+import LoginAuth from "./login_auth";
 
 const Login = ({ authService }) => {
   return (
     <>
       <section className={styles.all}>
         <div className={styles.template}>
-          <Login_header />
-          <Login_auth authService={authService} />
+          <LoginHeader />
+          <LoginAuth authService={authService} />
         </div>
       </section>
     </>

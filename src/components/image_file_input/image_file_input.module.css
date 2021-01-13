@@ -1,13 +1,23 @@
 @value makerLightPink,makerBlack from "../../common/colors.css";
 
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.input {
+  display: none;
+}
+
 .button {
+  width: 100%;
   background-color: makerLightPink;
   color: makerBlack;
   font-weight: bold;
   cursor: pointer;
   padding: 0.5em;
   font-size: 0.8rem;
-  width: 100%;
   border: none;
 }
 

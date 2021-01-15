@@ -3,16 +3,7 @@ import styles from "./card_edit_form.module.css";
 import Button from "../button/button";
 
 const CardEditForm = ({ FileInput, card, updateCard, onDelete }) => {
-  const {
-    name,
-    company,
-    title,
-    email,
-    message,
-    theme,
-    fileName,
-    fileURL,
-  } = card;
+  const { name, company, title, email, message, theme, fileName } = card;
 
   // 이미지 파일이 업데이트 되면 file name,url update
   const onFileChange = (file) => {

@@ -3,7 +3,7 @@ import Login from "./components/login/login";
 import styles from "./app.module.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./components/home/home";
-function App({ FileInput, authService }) {
+function App({ FileInput, authService, cardRepository }) {
   return (
     <section className={styles.all}>
       <BrowserRouter>
@@ -13,7 +13,11 @@ function App({ FileInput, authService }) {
           </Route>
 
           <Route path="/home">
-            <Home FileInput={FileInput} authService={authService} />
+            <Home
+              FileInput={FileInput}
+              authService={authService}
+              cardRepository={cardRepository}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -4,52 +4,35 @@ import { useHistory } from "react-router";
 import Header from "../header/login_header";
 import CardMaker from "../card_maker/card_maker";
 import CardPreview from "../card_preview/card_preview";
-const Home = ({ FileInput, authService }) => {
+const Home = ({ FileInput, authService, cardRepository }) => {
+  // login component를 통해서 왔다면 값을 가지고 있다. => userId 초기값으로 사용
+  const historyState = useHistory.state;
   //key : 1 ,2 , 3.....
-  const [cards, setCards] = useState({
-    1: {
-      id: 1,
-      name: "Jun",
-      company: "Naver",
-      theme: "dark",
-      title: "Front-end Engineer",
-      email: "jjune095@naver.com",
-      message: "Free life",
-      fileName: "jun",
-      fileURL: null,
-    },
-    2: {
-      id: 2,
-      name: "JiYoung",
-      company: "Samsung",
-      theme: "light",
-      title: "Back-end Engineer",
-      email: "jyoon@naver.com",
-      message: "pang pang love",
-      fileName: "jiyoung",
-      fileURL: null,
-    },
-    3: {
-      id: 3,
-      name: "Myeong",
-      company: "Mobinity",
-      theme: "colorful",
-      title: "Android Engineer",
-      email: "eqos2014@naver.com",
-      message: "Android my life",
-      fileName: "myeong",
-      fileURL: null,
-    },
-  });
+  const [cards, setCards] = useState({});
+  const [userId, setUserId] = useState(historyState && historyState.id);
   const history = useHistory();
   const onLogout = () => {
     authService.logout();
   };
 
+  // 사용자 Id 변경시마다
   useEffect(() => {
-    // logout function
+    if (!userId) {
+      return;
+    }
+    //stopSync는 syncCards에서 return된 값이다. (ref.off)
+    const stopSync = cardRepository.syncCards(userId, (cards) => {
+      setCards(cards);
+    });
+    //unMount시 자동 호출 (불필요한 네트워크 사용 )
+    return () => stopSync();
+  }, [userId]);
+  //login - logout
+  useEffect(() => {
     authService.onAuthChange((user) => {
-      if (!user) {
+      if (user) {
+        setUserId(user.uid);
+      } else {
         history.push("/");
       }
     });
@@ -68,6 +51,8 @@ const Home = ({ FileInput, authService }) => {
       updated[card.id] = card;
       return updated;
     });
+    // firebase update
+    cardRepository.saveCard(userId, card);
   };
   const deleteCard = (card) => {
     setCards((cards) => {
@@ -75,6 +60,8 @@ const Home = ({ FileInput, authService }) => {
       delete updated[card.id];
       return updated;
     });
+    // firebase update
+    cardRepository.removeCard(userId, card);
   };
   return (
     <section className={styles.home}>

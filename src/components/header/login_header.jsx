@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./login_header.module.css";
-const LoginHeader = ({ onLogout }) => {
+const LoginHeader = memo(({ onLogout }) => {
   return (
     <>
       <header className={styles.header}>
@@ -14,6 +14,6 @@ const LoginHeader = ({ onLogout }) => {
       </header>
     </>
   );
-};
+});
 
 export default LoginHeader;

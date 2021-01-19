@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import ReactDOM from "react-dom";
 import "./index.module.css";
 import App from "./app";
@@ -13,9 +13,9 @@ const imageUploader = new ImageUploader();
 const cardRepository = new CardRepository();
 // 나중에 props를 여러개 보낼 수도 있으니 확장성과 유지보수를 위해 FileInput이라는 컴포넌트 자체를 넘김
 // Component props는 대문자로 표시.
-const FileInput = (props) => (
+const FileInput = memo((props) => (
   <ImageFileInput {...props} imageUploader={imageUploader} />
-);
+));
 
 ReactDOM.render(
   <React.StrictMode>

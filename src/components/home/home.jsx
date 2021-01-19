@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./home.module.css";
 import { useHistory } from "react-router";
 import Header from "../header/login_header";
@@ -11,9 +11,13 @@ const Home = ({ FileInput, authService, cardRepository }) => {
   const [cards, setCards] = useState({});
   const [userId, setUserId] = useState(historyState && historyState.id);
   const history = useHistory();
-  const onLogout = () => {
+
+  // memo를 사용해도 Home이 변경이 될때마다 onLogout이 계속 만들어진다. => useCallback 사용
+  // props,state가 변경이 되면 다시 호출이 된다. => authService가 변할때만 조건 넣어주기
+  // 10.25
+  const onLogout = useCallback(() => {
     authService.logout();
-  };
+  }, [authService]);
 
   // 사용자 Id 변경시마다
   useEffect(() => {

@@ -3,20 +3,11 @@ import styles from "./card.module.css";
 
 const DEFAULT_IMAGE = "/images/default_logo.png";
 const Card = ({ card }) => {
-  const {
-    name,
-    company,
-    title,
-    email,
-    message,
-    theme,
-    fileName,
-    fileURL,
-  } = card;
+  const { name, company, title, email, message, theme, fileURL } = card;
   const url = fileURL || DEFAULT_IMAGE; // url이 없을때 defualt
   return (
     <li className={`${styles.card} ${getStyles(theme)}`}>
-      <img src={url} alt="card_image" className={styles.avatar} />
+      <img src={url} alt="profile" className={styles.avatar} />
       <div className={styles.info}>
         <h1 className={styles.content1}>{name} </h1>
         <p className={`${styles.conpany} ${styles.content2}`}>{company}</p>

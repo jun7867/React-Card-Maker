@@ -26,7 +26,8 @@ const Home = ({ FileInput, authService, cardRepository }) => {
     });
     //unMount시 자동 호출 (불필요한 네트워크 사용 )
     return () => stopSync();
-  }, [userId]);
+  }, [userId, cardRepository]);
+
   //login - logout
   useEffect(() => {
     authService.onAuthChange((user) => {
@@ -36,7 +37,7 @@ const Home = ({ FileInput, authService, cardRepository }) => {
         history.push("/");
       }
     });
-  });
+  }, [authService, history]);
 
   const createOrUpdateCard = (card) => {
     //map을 사용하면 효율이 안좋다.

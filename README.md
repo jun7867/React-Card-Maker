@@ -4,7 +4,7 @@
 
 
 ## 사용 기술
-React Hook, Firebase, MVC Pattern, Cloudinary (image upload), dependency injection
+React Hook, Firebase, MVC Pattern, Cloudinary (image upload), dependency injection, memo
 
 
 ## 기능 구현
